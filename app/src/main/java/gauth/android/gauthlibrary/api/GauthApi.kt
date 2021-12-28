@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
 import kotlin.math.sign
 
-class GauthApi : Serializable {
+class GauthApi {
 
     private var apiService: ApiService
 

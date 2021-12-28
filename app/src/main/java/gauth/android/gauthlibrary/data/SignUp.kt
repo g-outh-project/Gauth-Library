@@ -1,7 +1,5 @@
 package gauth.android.gauthlibrary.data
 
-import java.io.Serializable
-
 data class SignUp(
     val id : String,
     val password : String,
@@ -10,4 +8,4 @@ data class SignUp(
     val birth : String,
     val nickname: String,
     val name : String
-) : Serializable
+)
