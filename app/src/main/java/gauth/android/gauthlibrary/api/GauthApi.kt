@@ -41,13 +41,13 @@ class GauthApi {
             }
 
         })
-        val intent = Intent(activity, SignInActivity::class.java)
+        val intent = Intent(activity, signInActivity::class.java)
         activity.startActivity(intent)
     }
 
     fun signUp(activity: Activity, signUpListener: SignUpListener) {
-        val signUpClickListener = SignUpActivity()
-        signUpClickListener.setOnSignUpClickListener(object : OnSignUpClickListener {
+        val signUpActivity = SignUpActivity()
+        signUpActivity.setOnSignUpClickListener(object : OnSignUpClickListener {
             override fun signUp(
                 id: String,
                 password: String,
@@ -61,7 +61,7 @@ class GauthApi {
             }
 
         })
-        val intent = Intent(activity, SignUpActivity::class.java)
+        val intent = Intent(activity, signUpActivity::class.java)
         activity.startActivity(intent)
     }
 
