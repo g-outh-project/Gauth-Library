@@ -23,7 +23,7 @@ allprojects {
         jcenter() // Warning: this repository is going to shut down soon
     }
 
-    group = 'com.github.yoct1994'
+    group = 'com.github.g-outh-project'
 }
 
 task clean(type: Delete) {
