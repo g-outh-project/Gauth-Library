@@ -35,20 +35,17 @@ class GauthApi : Serializable {
     }
 
     fun signIn(activity: Activity, signInListener: SignInListener) {
-        val intent = Intent(activity, SignInActivity::class.java)
-        intent.putExtra("login", object : OnLoginClickListener {
+        SignInActivity.setListener(object : OnLoginClickListener {
             override fun signIn(id: String, password: String) {
                 signIn(SignIn(id, password), signInListener)
             }
-
         })
+        val intent = Intent(activity, SignInActivity::class.java)
         activity.startActivity(intent)
     }
 
     fun signUp(activity: Activity, signUpListener: SignUpListener) {
-        val signUpActivity = SignUpActivity()
-        val intent = Intent(activity, signUpActivity::class.java)
-        intent.putExtra("signUp", object : OnSignUpClickListener {
+        SignUpActivity.setListener(object : OnSignUpClickListener {
             override fun signUp(
                 id: String,
                 password: String,
@@ -61,6 +58,7 @@ class GauthApi : Serializable {
                 signUp(SignUp(id, password, email, school, birth, nickname, name), signUpListener)
             }
         })
+        val intent = Intent(activity, SignUpActivity::class.java)
         activity.startActivity(intent)
     }
 

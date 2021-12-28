@@ -12,7 +12,13 @@ import gauth.android.gauthlibrary.listener.OnLoginClickListener
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySignInBinding
-    private lateinit var onLoginClickListener: OnLoginClickListener
+
+    companion object {
+        @JvmStatic lateinit var onLoginClickListener: OnLoginClickListener
+        @JvmStatic fun setListener(listener: OnLoginClickListener) {
+            onLoginClickListener = listener
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

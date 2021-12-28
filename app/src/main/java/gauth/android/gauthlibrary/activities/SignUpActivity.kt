@@ -13,7 +13,13 @@ import gauth.android.gauthlibrary.listener.OnSignUpClickListener
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var onSignUpClickListener: OnSignUpClickListener
+
+    companion object {
+        @JvmStatic lateinit var onSignUpClickListener: OnSignUpClickListener
+        @JvmStatic fun setListener(listener: OnSignUpClickListener) {
+            onSignUpClickListener = listener
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
