@@ -9,6 +9,8 @@ import gauth.android.gauthlibrary.activities.SignUpActivity
 import gauth.android.gauthlibrary.data.SignIn
 import gauth.android.gauthlibrary.data.SignUp
 import gauth.android.gauthlibrary.data.Token
+import gauth.android.gauthlibrary.listener.OnLoginClickListener
+import gauth.android.gauthlibrary.listener.OnSignUpClickListener
 import gauth.android.gauthlibrary.listener.SignInListener
 import gauth.android.gauthlibrary.listener.SignUpListener
 import gauth.android.gauthlibrary.service.ApiService
@@ -31,54 +33,33 @@ class GauthApi {
     }
 
     fun signIn(activity: Activity, signInListener: SignInListener) {
-        val signInActivity = SignInActivity()
+        val signInActivity = SignInActivity(object : OnLoginClickListener {
+            override fun signIn(id: String, password: String) {
+                signIn(SignIn(id, password), signInListener)
+            }
+        })
 
         val intent = Intent(activity, signInActivity::class.java)
         activity.startActivity(intent)
-
-        signInActivity.setClickListener {
-            val id = signInActivity.getBinding().editId.text.toString()
-            val password = signInActivity.getBinding().editPassword.toString()
-
-            if(id.isEmpty() || password.isEmpty()) {
-                Toast.makeText(signInActivity, "id 혹은 password를 입력하세요", Toast.LENGTH_SHORT).show()
-                return@setClickListener
-            }
-
-            signIn(SignIn(id, password), signInListener)
-        }
     }
 
     fun signUp(activity: Activity, signUpListener: SignUpListener) {
-        val signUpActivity = SignUpActivity()
+        val signUpActivity = SignUpActivity(object : OnSignUpClickListener {
+            override fun signUp(
+                id: String,
+                password: String,
+                email: String,
+                school: String,
+                birth: String,
+                nickname: String,
+                name: String
+            ) {
+                signUp(SignUp(id, password, email, school, birth, nickname, name), signUpListener)
+            }
+        })
 
         val intent = Intent(activity, signUpActivity::class.java)
         activity.startActivity(intent)
-
-        val binding = signUpActivity.getBinding()
-
-        signUpActivity.setClickListener {
-            val password = binding.editPassword.text.toString()
-            val checkPassword = binding.editCheckPassword.text.toString()
-            val id = binding.editId.text.toString()
-            val name = binding.editName.text.toString()
-            val nickname = binding.editNickname.text.toString()
-            val email = binding.editEmail.text.toString()
-            val school = binding.editSchool.text.toString()
-            val birth = binding.editBirth.text.toString()
-
-            if(id.isEmpty() || name.isEmpty() || nickname.isEmpty() || email.isEmpty() || school.isEmpty() || password.isEmpty() || checkPassword.isEmpty() || birth.isEmpty()) {
-                Toast.makeText(signUpActivity, "입력을 확인헤주세요", Toast.LENGTH_SHORT).show()
-                return@setClickListener
-            }
-
-            if(!password.equals(checkPassword)) {
-                Toast.makeText(signUpActivity, "패스워드가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-                return@setClickListener
-            }
-
-            signUp(SignUp(id, password, email, school, birth, nickname, name), signUpListener)
-        }
     }
 
     private fun signUp(signUp: SignUp, signUpListener: SignUpListener) {
