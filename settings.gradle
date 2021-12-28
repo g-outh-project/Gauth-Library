@@ -1,0 +1,2 @@
+rootProject.name = "GauthLibrary"
+include ':app'
