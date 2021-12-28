@@ -22,6 +22,8 @@ allprojects {
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
     }
+
+    group = 'com.github.yoct1994'
 }
 
 task clean(type: Delete) {
