@@ -32,6 +32,10 @@ class GauthApi {
 
     fun signIn(activity: Activity, signInListener: SignInListener) {
         val signInActivity = SignInActivity()
+
+        val intent = Intent(activity, signInActivity::class.java)
+        activity.startActivity(intent)
+
         signInActivity.setClickListener {
             val id = signInActivity.getBinding().editId.text.toString()
             val password = signInActivity.getBinding().editPassword.toString()
@@ -43,13 +47,14 @@ class GauthApi {
 
             signIn(SignIn(id, password), signInListener)
         }
-
-        val intent = Intent(activity, signInActivity::class.java)
-        activity.startActivity(intent)
     }
 
     fun signUp(activity: Activity, signUpListener: SignUpListener) {
         val signUpActivity = SignUpActivity()
+
+        val intent = Intent(activity, signUpActivity::class.java)
+        activity.startActivity(intent)
+
         val binding = signUpActivity.getBinding()
 
         signUpActivity.setClickListener {
@@ -74,8 +79,6 @@ class GauthApi {
 
             signUp(SignUp(id, password, email, school, birth, nickname, name), signUpListener)
         }
-        val intent = Intent(activity, signUpActivity::class.java)
-        activity.startActivity(intent)
     }
 
     private fun signUp(signUp: SignUp, signUpListener: SignUpListener) {
