@@ -9,11 +9,10 @@ import gauth.android.gauthlibrary.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivitySignInBinding
+    private val binding : ActivitySignInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
     }
 
     fun setClickListener(onClickListener: View.OnClickListener) {
