@@ -19,9 +19,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.Serializable
 import kotlin.math.sign
 
-class GauthApi {
+class GauthApi : Serializable {
 
     private var apiService: ApiService
 
