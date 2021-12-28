@@ -1,5 +1,7 @@
 package gauth.android.gauthlibrary.listener
 
-interface OnLoginClickListener {
+import java.io.Serializable
+
+interface OnLoginClickListener: Serializable {
     fun signIn(id: String, password: String)
 }

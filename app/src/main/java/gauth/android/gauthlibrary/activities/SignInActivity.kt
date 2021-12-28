@@ -18,6 +18,8 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
 
+        onLoginClickListener = intent.getSerializableExtra("login") as OnLoginClickListener
+
         binding.loginBtn.setOnClickListener {
             val id = binding.editId.text.toString()
             val password = binding.editPassword.toString()
@@ -29,9 +31,5 @@ class SignInActivity : AppCompatActivity() {
 
             onLoginClickListener.signIn(id, password)
         }
-    }
-
-    fun setOnLoginClickListener(listener: OnLoginClickListener) {
-        this.onLoginClickListener = listener
     }
 }
