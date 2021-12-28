@@ -25,8 +25,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
 
-        onSignUpClickListener = intent.getSerializableExtra("signUp") as OnSignUpClickListener
-
         binding.signUpBtn.setOnClickListener {
             val password = binding.editPassword.text.toString()
             val checkPassword = binding.editCheckPassword.text.toString()
