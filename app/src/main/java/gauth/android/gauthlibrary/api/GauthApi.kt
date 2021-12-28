@@ -19,6 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.math.sign
 
 class GauthApi {
 
@@ -33,18 +34,20 @@ class GauthApi {
     }
 
     fun signIn(activity: Activity, signInListener: SignInListener) {
-        val signInActivity = SignInActivity(object : OnLoginClickListener {
+        val signInActivity = SignInActivity()
+        signInActivity.setOnLoginClickListener(object : OnLoginClickListener {
             override fun signIn(id: String, password: String) {
                 signIn(SignIn(id, password), signInListener)
             }
-        })
 
-        val intent = Intent(activity, signInActivity::class.java)
+        })
+        val intent = Intent(activity, SignInActivity::class.java)
         activity.startActivity(intent)
     }
 
     fun signUp(activity: Activity, signUpListener: SignUpListener) {
-        val signUpActivity = SignUpActivity(object : OnSignUpClickListener {
+        val signUpClickListener = SignUpActivity()
+        signUpClickListener.setOnSignUpClickListener(object : OnSignUpClickListener {
             override fun signUp(
                 id: String,
                 password: String,
@@ -56,9 +59,9 @@ class GauthApi {
             ) {
                 signUp(SignUp(id, password, email, school, birth, nickname, name), signUpListener)
             }
-        })
 
-        val intent = Intent(activity, signUpActivity::class.java)
+        })
+        val intent = Intent(activity, SignUpActivity::class.java)
         activity.startActivity(intent)
     }
 

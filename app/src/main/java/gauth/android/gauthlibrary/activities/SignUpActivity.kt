@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import gauth.android.gauthlibrary.R
 import gauth.android.gauthlibrary.databinding.ActivitySignUpBinding
+import gauth.android.gauthlibrary.listener.OnLoginClickListener
 import gauth.android.gauthlibrary.listener.OnSignUpClickListener
 
-class SignUpActivity(val onClickListener: OnSignUpClickListener) : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
+    private lateinit var onSignUpClickListener: OnSignUpClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +39,11 @@ class SignUpActivity(val onClickListener: OnSignUpClickListener) : AppCompatActi
                 return@setOnClickListener
             }
 
-            onClickListener.signUp(id, password, email, school, birth, nickname, name)
+            onSignUpClickListener.signUp(id, password, email, school, birth, nickname, name)
         }
+    }
+
+    fun setOnSignUpClickListener(listener: OnSignUpClickListener) {
+        this.onSignUpClickListener = listener
     }
 }
