@@ -1,6 +1,7 @@
 package gauth.android.gauthlibrary.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,8 @@ class SignUpActivity : AppCompatActivity() {
             val email = binding.editEmail.text.toString()
             val school = binding.editSchool.text.toString()
             val birth = binding.editBirth.text.toString()
+
+            Log.d("request", "$password $id $name $nickname $email $school $birth")
 
             if(id.isEmpty() || name.isEmpty() || nickname.isEmpty() || email.isEmpty() || school.isEmpty() || password.isEmpty() || checkPassword.isEmpty() || birth.isEmpty()) {
                 Toast.makeText(this, "입력을 확인헤주세요", Toast.LENGTH_SHORT).show()

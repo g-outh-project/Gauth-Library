@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface ApiService {
     @POST("/api/v1/auth/signup")
-    fun signUp(@Body signUpRequest: SignUp) : Call<Void>
+    fun signUp(@Body signUp: SignUp) : Call<Void>
 
     @POST("/api/v1/auth/login")
     fun signIn(@Body signIn: SignIn) : Call<Token>

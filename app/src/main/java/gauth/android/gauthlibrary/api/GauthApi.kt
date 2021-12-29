@@ -84,7 +84,7 @@ class GauthApi {
         call.enqueue(object : Callback<Token> {
             override fun onResponse(call: Call<Token>, response: Response<Token>) {
                 Log.d("response", "${response.code()} ${response.message()}")
-                if(response.code() == 200)
+                if(response.code() == 201)
                     response.body()?.let { signInListener.onSuccess(it) }
                 else
                     signInListener.onFail()
