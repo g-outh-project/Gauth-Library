@@ -122,8 +122,7 @@
   	
     override fun onSuccess() {
   		//TODO(회원가입 성공 로직)
-   	}
-  
+    }
   })
   ```
 
