@@ -66,7 +66,8 @@ class GauthApi {
         val call = apiService.signUp(signUp)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful)
+                Log.d("response", "${response.code()} ${response.message()}")
+                if(response.code() == 200)
                     signUpListener.onSuccess()
                 else
                     signUpListener.onFail()
@@ -82,7 +83,8 @@ class GauthApi {
         val call = apiService.signIn(signIn)
         call.enqueue(object : Callback<Token> {
             override fun onResponse(call: Call<Token>, response: Response<Token>) {
-                if(response.isSuccessful)
+                Log.d("response", "${response.code()} ${response.message()}")
+                if(response.code() == 200)
                     response.body()?.let { signInListener.onSuccess(it) }
                 else
                     signInListener.onFail()
