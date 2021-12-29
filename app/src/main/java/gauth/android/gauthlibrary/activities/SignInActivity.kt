@@ -26,7 +26,7 @@ class SignInActivity : AppCompatActivity() {
 
         binding.loginBtn.setOnClickListener {
             val id = binding.editId.text.toString()
-            val password = binding.editPassword.toString()
+            val password = binding.editPassword.text.toString()
 
             if(id.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "id 혹은 password를 입력하세요", Toast.LENGTH_SHORT).show()
