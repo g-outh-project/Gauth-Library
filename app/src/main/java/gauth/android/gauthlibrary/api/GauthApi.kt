@@ -67,7 +67,7 @@ class GauthApi {
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 Log.d("response", "${response.code()} ${response.message()}")
-                if(response.code() == 200)
+                if(response.code() == 201)
                     signUpListener.onSuccess()
                 else
                     signUpListener.onFail()
@@ -84,7 +84,7 @@ class GauthApi {
         call.enqueue(object : Callback<Token> {
             override fun onResponse(call: Call<Token>, response: Response<Token>) {
                 Log.d("response", "${response.code()} ${response.message()}")
-                if(response.code() == 201)
+                if(response.code() == 200)
                     response.body()?.let { signInListener.onSuccess(it) }
                 else
                     signInListener.onFail()
